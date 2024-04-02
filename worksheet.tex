@@ -1,27 +1,54 @@
 \documentclass{dcbl/challenge}
 
-\setdoctitle{Der Titel meines Dokuments}
+\setdoctitle{Expressions and Functions}
 \setdocauthor{Stephan Bökelmann}
 \setdocemail{sboekelmann@ep1.rub.de}
 \setdocinstitute{AG Physik der Hadronen und Kerne}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{listings}
 
 
 \begin{document}
 
-Jedes Challenge-Blatt beginnt mit einer kurzen Einleitung, die einen Kontext für den jeweiligen Zettel setzt. 
+The basic purpose of our computing-machines is to perform calculations.
+But not in the sense of abstract mathematics, like rearranging polynomials, or solving equations, but in the sense of evaluating expressions.
+An expression is a mathematical object that can be evaluated to produce a value. 
+It consists of operands and operators that dictate how these operands are processed or combined. 
+Expressions are fundamental to programming and mathematical logic, allowing for the representation of calculations, conditions, and data transformations within a program. They can range from simple arithmetic calculations to complex function calls and conditional evaluations. 
+When an expression is evaluated, it produces a single value, which can then be used in further operations, assigned to variables, or used to make decisions in the flow of a program.
 
-\section*{Aufgaben}
+
+\section*{Exercises}
 \begin{aufgabe}
-    Löse die Gleichung $x^2 - 5x + 6 = 0$.
+    By combining expressions, we can create more complex functions.
+    These functions can be encoded into our C-code, by using appropriate syntax.
+    Let's take the following function:\\
+    \(f: \{z \in \mathbb{N}_0 \mid 0 \leq z \leq \text{{\texttt{UINT\_MAX}}}\} \rightarrow \mathbb{N}_0\) defined by \(f(x) = \left\lfloor \frac{x}{2} \right\rfloor + \left\lfloor \frac{x}{4} \right\rfloor\), with \(\text{{\texttt{UINT\_MAX}}}\) the largest element of \text{{\texttt{unsigned int}}} determined by the compiler.
+    A function given like that can be implemented in the following way:
+    \begin{lstlisting}
+    unsigned int f(unsigned int x) {
+        return (x / 2) + (x / 4);
+    }
+    \end{lstlisting}
+    And be called in the following way:
+    \begin{lstlisting}
+    unsigned int result = f(10);
+    \end{lstlisting}
+    Explain, how the datatypes of the parameters and return value relate to the domain and range of the function.    
 \end{aufgabe}
 
-\begin{aufgabe}[Für Fortgeschrittene]
-    Beweise den Satz des Pythagoras.
+\begin{aufgabe}
+    Implement the following functions in C:
+    \begin{enumerate}
+        \item \(g: \{ (x, y) \in \mathbb{N}_0 \times \mathbb{N}_0 \mid 0 \leq x, y \leq \text{{\texttt{UINT\_MAX}}}\} \rightarrow \mathbb{N}_0\); \(g(x, y) = \left\lfloor \frac{x + y}{3} \right\rfloor + \left\lfloor \frac{x + y}{5} \right\rfloor\), with \(\text{{\texttt{UINT\_MAX}}}\) the largest element of \text{{\texttt{unsigned int}}} determined by the compiler.
+        \item \(h: \mathbb{Z}^3 \rightarrow \mathbb{R}\); \[h(x, y, z) = \sqrt{x^2 + y^2 + z^2}\] with \(x, y, z \in \mathbb{Z}\) and the result in \( \mathbb{R} \) approximated by a floating point number.
+    \end{enumerate}
 \end{aufgabe}
 
-\section*{Anmerkungen}
-\begin{enumerate}
-    \item Link zu einem YouTube-Video: \url{https://www.youtube.com}
-\end{enumerate}
+%\section*{Annotations}
+%\begin{enumerate}
+%    \item Link to a youtube video: \url{https://www.youtube.com}
+%\end{enumerate}
 
 \end{document}
